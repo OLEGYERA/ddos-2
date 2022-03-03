@@ -1,18 +1,27 @@
 const GRequest = require('./lib/g-request');
 
-const Url = 'https://nsn.fm/';
+const Urls = [
+  'https://nsn.fm/',
+  'https://www.delivery-club.ru/'
+];
 
-function Interact(){
+
+
+
+function Interact(url){
   const gateway_request = new GRequest();
 
-  for(var i=0; i<10; i++){
-    gateway_request.get(Url)
+  for(var i=0; i<3; i++){
+    gateway_request.get(url)
   }
 }
 
 
 
-setInterval(Interact, 1000)
+Urls.forEach(el => {
+  setInterval(() => Interact(el), 1000)
+})
+
 
 
 
